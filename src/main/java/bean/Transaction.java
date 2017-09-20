@@ -1,4 +1,4 @@
-package com.example.SecureBankingApplication;
+package bean;
 
 
 import java.sql.Timestamp;
