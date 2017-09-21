@@ -17,12 +17,11 @@ public class Employee {
 	}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	
+	@GeneratedValue(strategy=GenerationType.AUTO)	
 	@Column(name="eid")
 	private int eid;
 	
-	@Column(name="Employee_type")
+	@Column(name="employee_type")
 	private EmployeeType Employee_type;
 
 	public EmployeeType getEmployee_type() {

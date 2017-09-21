@@ -17,8 +17,7 @@ public class Customer extends User {
 	}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	
+	@GeneratedValue(strategy=GenerationType.AUTO)	
 	@Column(name="custid")
 	private int cust_id;
 	

@@ -14,8 +14,7 @@ import javax.persistence.Table;
 public class AccountLog {
 	
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 
 	//TO ADD	
 	
