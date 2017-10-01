@@ -1,10 +1,15 @@
 package bean;
 
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -19,15 +24,18 @@ public abstract class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="user_id")
+	private long  uid;
 	
-	@Column(name="first_name")
+	@Column(name="first_name",nullable=false)
 	@NotEmpty(message = "Please provide first name")
 	private String f_name;
 	
-	@Column(name="last_name")
+	@Column(name="last_name",nullable=false)
 	private String l_name;
 	
-	@Column(name="email")
+	@Id
+	@Column(name="email", unique=true,nullable=false)
 	@Email(message = "Please provide a valid Email")
 	@NotEmpty(message = "*Please provide an email")
 	private String email;
@@ -38,15 +46,17 @@ public abstract class User {
 	@Column(name="active")
 	private int active;
 	
-	@Column(name="user_id")
-	private long  uid;
+	
 	
 	@Column(name="password")
 	@Length(min=5,max=12,message="enter password of atleast 5 characters and less than 12 characters")
 	@NotEmpty(message="Enter password")
 	@Transient
 	private String password;
-		
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "id1", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "custid"))
+	//@JoinTable(name = "id2", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "eid"))	
 	public String getPassword() {
 		return password;
 	}
